@@ -48,9 +48,5 @@ export const ToastProvider: React.FC = ({ children }) => {
 export function useToast(): ToastContextData {
   const context = useContext(ToastContext);
 
-  if (!context) {
-    throw new Error('useToas must be used within a ToasProvider');
-  }
-
   return context;
 }

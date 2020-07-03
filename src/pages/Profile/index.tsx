@@ -112,7 +112,7 @@ const Profile: React.FC = () => {
         });
       }
     },
-    [addToast, history],
+    [addToast, history, updateUser],
   );
 
   const handleAvatarChange = useCallback(
@@ -164,7 +164,12 @@ const Profile: React.FC = () => {
             <label htmlFor="avatar">
               <FiCamera />
 
-              <input type="file" id="avatar" onChange={handleAvatarChange} />
+              <input
+                type="file"
+                alt="Alterar avatar"
+                id="avatar"
+                onChange={handleAvatarChange}
+              />
             </label>
           </InputAvatar>
 

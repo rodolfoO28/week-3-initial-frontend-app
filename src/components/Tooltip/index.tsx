@@ -13,7 +13,7 @@ const Tooltip: React.FC<TooltipProps> = ({
   className = '',
 }) => {
   return (
-    <Container className={className}>
+    <Container data-testid="tooltip-container" className={className}>
       {children}
       <span>{title}</span>
     </Container>

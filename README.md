@@ -81,3 +81,8 @@ Project of week 3, create initial frontend app with react. Follow the topics cov
   - Create profile page
   - Change profile avatar
   - Update profile data
+- Tests
+  - Configuration jest
+  - Create first test
+  - Generate coverage
+  - Create test components/pages/hooks
