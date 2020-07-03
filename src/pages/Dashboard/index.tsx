@@ -56,7 +56,7 @@ const Dashboard: React.FC = () => {
 
   useEffect(() => {
     api
-      .get(`/providers/${user.id}/month-availability`, {
+      .get(`providers/${user.id}/month-availability`, {
         params: {
           year: currentMonth.getFullYear(),
           month: currentMonth.getMonth() + 1,
@@ -69,7 +69,7 @@ const Dashboard: React.FC = () => {
 
   useEffect(() => {
     api
-      .get<AppointmentItem[]>(`/appointments/schedule`, {
+      .get<AppointmentItem[]>(`appointments/schedule`, {
         params: {
           year: selectedDate.getFullYear(),
           month: selectedDate.getMonth() + 1,
@@ -122,9 +122,11 @@ const Dashboard: React.FC = () => {
   }, [appointments]);
 
   const nextAppointment = useMemo(() => {
-    return appointments.find((appointment) =>
+    const appointmentNext = appointments.find((appointment) =>
       isAfter(parseISO(appointment.date), new Date()),
     );
+
+    return appointmentNext;
   }, [appointments]);
 
   const handleDateChange = useCallback((day: Date, modifiers: DayModifiers) => {
@@ -154,7 +156,7 @@ const Dashboard: React.FC = () => {
             </div>
           </Profile>
 
-          <button type="button" onClick={signOut}>
+          <button type="button" data-testid="button-sign-out" onClick={signOut}>
             <FiPower />
           </button>
         </HeaderContent>
@@ -170,7 +172,7 @@ const Dashboard: React.FC = () => {
           </p>
 
           {isToday(selectedDate) && nextAppointment && (
-            <NextAppointment>
+            <NextAppointment data-testid="next-appoitment">
               <strong>Agendamento a seguir</strong>
               <div>
                 <img
@@ -234,7 +236,7 @@ const Dashboard: React.FC = () => {
             ))}
           </Section>
         </Schedule>
-        <Calendar>
+        <Calendar data-testid="calendar-element">
           <DayPicker
             weekdaysShort={['D', 'S', 'T', 'Q', 'Q', 'S', 'S']}
             fromMonth={new Date()}
