@@ -87,3 +87,7 @@
   - Create first test
   - Generate coverage
   - Create test components/pages/hooks
+
+# 🚀️ Deploy Frontend
+
+- Configuration build/deploy
